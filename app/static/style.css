@@ -1,0 +1,452 @@
+
+/* ========================================
+   1. CONFIGURAÇÕES GERAIS
+======================================== */
+
+:root {
+    --pergaminho: #f2e4c5;
+    --pergaminho-claro: #fbf2dc;
+    --pergaminho-escuro: #dfc99d;
+
+    --couro: #382319;
+    --couro-claro: #583a27;
+
+    --dourado: #b18a43;
+    --dourado-claro: #d5b66e;
+
+    --texto: #302318;
+    --texto-suave: #705b42;
+
+    --erro: #8a2828;
+    --sucesso: #315c38;
+
+    --sombra: rgba(20, 12, 7, 0.25);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--texto);
+
+    background:
+        radial-gradient(
+            ellipse at top,
+            #74573b 0%,
+            #342319 65%,
+            #21150f 100%
+        );
+
+    line-height: 1.6;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--dourado);
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   2. CABEÇALHO
+======================================== */
+
+.cabecalho {
+    padding: 42px 20px 30px;
+    text-align: center;
+    color: var(--pergaminho-claro);
+}
+
+.subtitulo {
+    margin: 0 0 8px;
+    color: var(--dourado-claro);
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.22em;
+}
+
+.cabecalho h1 {
+    margin: 0;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: normal;
+    line-height: 1.2;
+    text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.4);
+}
+
+.descricao {
+    max-width: 520px;
+    margin: 16px auto 0;
+    color: #e0d0ad;
+    font-size: 1rem;
+}
+
+
+/* ========================================
+   3. ÁREA PRINCIPAL
+======================================== */
+
+.container {
+    width: min(100% - 32px, 820px);
+    margin: 0 auto 45px;
+}
+
+.livro {
+    position: relative;
+    padding: clamp(22px, 5vw, 48px);
+
+    background:
+        radial-gradient(
+            ellipse at 30% 20%,
+            rgba(255, 255, 255, 0.35),
+            transparent 60%
+        ),
+        linear-gradient(
+            135deg,
+            var(--pergaminho-claro),
+            var(--pergaminho),
+            var(--pergaminho-escuro)
+        );
+
+    border: 3px solid var(--dourado);
+    border-radius: 5px 14px 14px 5px;
+
+    box-shadow:
+        0 18px 40px var(--sombra),
+        inset 8px 0 0 rgba(76, 43, 24, 0.12),
+        inset 0 0 25px rgba(93, 62, 28, 0.12);
+}
+
+.livro::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 13px;
+    width: 2px;
+    background: rgba(97, 62, 31, 0.16);
+    pointer-events: none;
+}
+
+
+/* ========================================
+   4. TÍTULO DO GRIMÓRIO
+======================================== */
+
+.livro-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    text-align: center;
+}
+
+.livro-cabecalho h2 {
+    margin: 0;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: normal;
+}
+
+.ornamento {
+    color: var(--dourado);
+    font-size: 1.2rem;
+}
+
+.introducao {
+    max-width: 520px;
+    margin: 12px auto 28px;
+    color: var(--texto-suave);
+    text-align: center;
+}
+
+
+/* ========================================
+   5. LISTA DE INSCRIÇÕES
+======================================== */
+
+.lista-inscricoes {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.inscricao {
+    padding: 20px 4px;
+    border-bottom: 1px solid rgba(96, 67, 35, 0.3);
+    overflow-wrap: anywhere;
+}
+
+.inscricao:first-child {
+    border-top: 1px solid rgba(96, 67, 35, 0.3);
+}
+
+.inscricao-cabecalho {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 5px 15px;
+    margin-bottom: 8px;
+}
+
+.inscricao-nome {
+    margin: 0;
+    font-size: 1.08rem;
+    font-weight: bold;
+    color: var(--couro);
+}
+
+.inscricao-data {
+    color: var(--texto-suave);
+    font-family: Arial, sans-serif;
+    font-size: 0.75rem;
+}
+
+.inscricao-mensagem {
+    margin: 0;
+    white-space: pre-wrap;
+    line-height: 1.8;
+}
+
+.estado-lista {
+    padding: 22px 0;
+    color: var(--texto-suave);
+    text-align: center;
+}
+
+.mensagem-status {
+    margin: 12px 0 0;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.mensagem-status:empty {
+    display: none;
+}
+
+.mensagem-status.erro {
+    color: var(--erro);
+}
+
+.mensagem-status.sucesso {
+    color: var(--sucesso);
+}
+
+
+/* ========================================
+   6. BOTÕES
+======================================== */
+
+.acoes {
+    display: flex;
+    justify-content: center;
+    margin-top: 28px;
+}
+
+.botao-principal,
+.botao-secundario {
+    min-height: 46px;
+    padding: 11px 20px;
+    border-radius: 5px;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.botao-principal {
+    border: 1px solid #26170f;
+    background: var(--couro);
+    color: var(--pergaminho-claro);
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.15);
+}
+
+.botao-principal:hover {
+    background: var(--couro-claro);
+}
+
+.botao-principal:active,
+.botao-secundario:active {
+    transform: translateY(1px);
+}
+
+.botao-secundario {
+    border: 1px solid var(--couro-claro);
+    background: transparent;
+    color: var(--couro);
+}
+
+.botao-secundario:hover {
+    background: rgba(80, 52, 30, 0.08);
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+
+/* ========================================
+   7. FORMULÁRIO
+======================================== */
+
+.formulario-marca {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 2px solid rgba(96, 67, 35, 0.3);
+}
+
+.formulario-marca[hidden] {
+    display: none;
+}
+
+.formulario-marca h2 {
+    margin: 0 0 20px;
+    font-size: 1.5rem;
+    font-weight: normal;
+    text-align: center;
+}
+
+.formulario-marca label {
+    display: block;
+    margin: 16px 0 6px;
+    font-weight: bold;
+}
+
+.formulario-marca input,
+.formulario-marca textarea {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #a88c60;
+    border-radius: 4px;
+    background: rgba(255, 250, 235, 0.75);
+    color: var(--texto);
+}
+
+.formulario-marca textarea {
+    resize: vertical;
+    min-height: 95px;
+    max-height: 250px;
+}
+
+.formulario-marca input::placeholder,
+.formulario-marca textarea::placeholder {
+    color: #87745b;
+}
+
+.contador {
+    margin-top: 6px;
+    color: var(--texto-suave);
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    text-align: right;
+}
+
+.acoes-formulario {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+
+/* ========================================
+   8. RODAPÉ
+======================================== */
+
+.livro-rodape {
+    margin-top: 35px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(96, 67, 35, 0.25);
+    color: var(--texto-suave);
+    font-size: 0.85rem;
+    font-style: italic;
+    text-align: center;
+}
+
+.rodape {
+    padding: 0 20px 28px;
+    color: #c6b18d;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+
+/* ========================================
+   9. RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 600px) {
+    .cabecalho {
+        padding: 30px 16px 24px;
+    }
+
+    .container {
+        width: calc(100% - 20px);
+        margin-bottom: 28px;
+    }
+
+    .livro {
+        padding: 25px 20px;
+        border-width: 2px;
+    }
+
+    .livro::before {
+        left: 7px;
+    }
+
+    .livro-cabecalho {
+        gap: 8px;
+    }
+
+    .inscricao-cabecalho {
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .acoes-formulario {
+        flex-direction: column-reverse;
+    }
+
+    .acoes-formulario button {
+        width: 100%;
+    }
+}
+
+
+/* ========================================
+   10. ACESSIBILIDADE
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}
