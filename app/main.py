@@ -11,7 +11,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.database import Base, engine, get_db
 from app.models import Inscricao
-from app.schemas import InscricaoCreate, InscricaoResponse
+from app.schemas import InscricaoCreate, InscricaoResponse, TesouroResponse
 
 
 # ==========================================
@@ -46,17 +46,53 @@ app.mount(
 
 tesouros = {
     "TES-001": {
-        "titulo": "O Primeiro Tesouro",
+        "titulo": "Você encontrou jóias",
         "mensagem": "Toda jornada começa com o primeiro passo.",
         "raridade": "Comum",
+        "imagem": "https://i.pinimg.com/236x/12/60/7b/12607b2033808e03af17d718937c9058.jpg",
     },
-    "TES-002": {
-        "titulo": "O Conhecimento Oculto",
-        "mensagem": "O conhecimento floresce quando é compartilhado.",
-        "raridade": "Raro",
-    },
-}
 
+    "TES-002": {
+            "titulo": "Você encontrou um personagem raro!",
+            "mensagem": "Capitão anti-social que gosta de poesias",
+            "raridade": "Raro",
+            "imagem": "https://i.pinimg.com/736x/5a/04/c5/5a04c55de6fd635fcea6164e34c6a21a.jpg",
+        },
+
+    "TES-003": {
+            "titulo": "Você encontrou um personagem lendário!",
+            "mensagem": "Um cogumelo que não está para brincadeiras! ",
+            "raridade": "Lendário",
+            "imagem": "https://i.pinimg.com/736x/00/55/24/005524b2a2165c126bb0cdea222c251a.jpg",
+        },
+    "TES-004": {
+            "titulo": "Você encontrou um personagem lendário!",
+            "mensagem": "Um cogumelo que não está para brincadeiras! ",
+            "raridade": "Lendário",
+            "imagem": "https://i.pinimg.com/736x/00/55/24/005524b2a2165c126bb0cdea222c251a.jpg",
+        },
+
+    "TES-005": {
+                "titulo": "Você encontrou uma carta de debuff mítico!",
+                "mensagem": "Qualquer um que a encontra passa a ficar desonline para sempre!",
+                "raridade": "Mítico",
+                "imagem": "https://i.pinimg.com/736x/f8/0f/7c/f80f7cba99d293d1f003c6d19809d571.jpg",
+            },
+    "TES-006": {
+                "titulo": "Você caiu em uma armadilha!",
+                "mensagem": "O pedrin do free fire expandiu o seu domínio e te prendeu nele, onde o capa é absoluto!",
+                "raridade": "xxxxxx",
+                "imagem": "https://i.pinimg.com/736x/89/0d/45/890d45e57c7a58c31af6fd8f692787d0.jpg ",
+                },
+
+    "TES-007": {
+                    "titulo": "Você encontrou uma carta mítica!",
+                    "mensagem": "+1000 aura e -999 ego",
+                    "raridade": "Mítico",
+                    "imagem": "https://i.pinimg.com/736x/35/a4/0b/35a40b06bea33951093e8c2ce8178cb2.jpg",
+                    "video": "blob:https://br.pinterest.com/2f3c8403-1286-48db-a093-1b8a77b308af"
+                    },                       
+}
 
 # ==========================================
 # PÁGINA INICIAL
@@ -111,7 +147,7 @@ def pagina_grimorio():
 # ==========================================
 # LISTAR INSCRIÇÕES
 # ==========================================
-@app.get("/api/tesouros/{codigo}")
+@app.get("/api/tesouros/{codigo}", response_model=TesouroResponse)
 def obter_tesouro(codigo: str):
     tesouro = tesouros.get(codigo.upper())
 

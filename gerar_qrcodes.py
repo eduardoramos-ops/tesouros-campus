@@ -10,6 +10,11 @@ PASTA_QRCODES = Path("qrcodes")
 TESOUROS = [
     "TES-001",
     "TES-002",
+    "TES-003",
+    "TES-004",
+    "TES-005",
+    "TES-006",
+    "TES-007",
 ]
 
 

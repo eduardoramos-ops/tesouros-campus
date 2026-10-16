@@ -1,17 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tesouro do Campus</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
     <header class="cabecalho">
         <p class="subtitulo">TESOUROS DO CAMPUS</p>
         <h1 id="titulo-tesouro">Tesouro encontrado</h1>
         <p class="descricao" id="raridade-tesouro"></p>
+        <img id="imagem-tesouro" class="imagem-tesouro" alt="Imagem do tesouro" hidden>
     </header>
 
     <main class="container">
@@ -40,6 +42,15 @@
                 const resposta = await fetch(
                     `/api/tesouros/${encodeURIComponent(codigo)}`
                 );
+                const imagem = document.getElementById("imagem-tesouro");
+
+                if (tesouro.imagem) {
+                    imagem.src = tesouro.imagem;
+                    imagem.hidden = false;
+                } else {
+                    imagem.hidden = true;
+                    imagem.removeAttribute("src");
+                }
 
                 if (!resposta.ok) {
                     throw new Error("Tesouro não encontrado.");
@@ -71,4 +82,5 @@
         carregarTesouro();
     </script>
 </body>
+
 </html>

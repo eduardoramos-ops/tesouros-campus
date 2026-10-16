@@ -1,6 +1,5 @@
-
 from datetime import datetime
-
+from pydantic import BaseModel, HttpUrl
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
@@ -23,3 +22,9 @@ class InscricaoResponse(BaseModel):
     criado_em: datetime
 
     model_config = ConfigDict(from_attributes=True)
+
+class TesouroResponse(BaseModel):
+    titulo: str
+    mensagem: str
+    raridade: str
+    imagem: HttpUrl | None = None
