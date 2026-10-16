@@ -77,6 +77,16 @@
                 document.getElementById("mensagem-tesouro").textContent =
                     "Este tesouro não existe ou não está disponível.";
             }
+
+            const imagem = document.getElementById("imagem-tesouro");
+
+            if (tesouro.imagem) {
+                imagem.src = tesouro.imagem;
+                imagem.hidden = false;
+            } else {
+                imagem.hidden = true;
+                imagem.removeAttribute("src");
+            }
         }
 
         carregarTesouro();
