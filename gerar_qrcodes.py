@@ -3,7 +3,7 @@ import qrcode
 from pathlib import Path
 
 # Enquanto estiver desenvolvendo no próprio computador:
-URL_BASE = "http://127.0.0.1:8000"
+URL_BASE = "https://tesouros-campus.onrender.com"
 
 PASTA_QRCODES = Path("qrcodes")
 
