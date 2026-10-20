@@ -48,10 +48,8 @@
                     throw new Error("Tesouro não encontrado.");
                 }
 
-                // Primeiro, recebemos os dados da API.
                 const tesouro = await resposta.json();
 
-                // Depois, podemos acessar as propriedades do tesouro.
                 const imagem = document.getElementById("imagem-tesouro");
 
                 if (imagem && tesouro.imagem) {
