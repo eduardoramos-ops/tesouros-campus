@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesouro do Campus</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <header class="cabecalho">
+        <p class="subtitulo">TESOUROS DO CAMPUS</p>
+        <h1 id="titulo-tesouro">Tesouro encontrado</h1>
+        <p class="descricao" id="raridade-tesouro"></p>
+        <img id="imagem-tesouro" class="imagem-tesouro" alt="Imagem do tesouro" hidden>
+    </header>
+
+    <main class="container">
+        <section class="livro">
+            <div class="livro-cabecalho">
+                <span class="ornamento" aria-hidden="true">✦</span>
+                <h2>A mensagem do tesouro</h2>
+                <span class="ornamento" aria-hidden="true">✦</span>
+            </div>
+
+            <p class="introducao" id="mensagem-tesouro"></p>
+
+            <div class="acoes">
+                <a class="botao-principal" href="/grimorio">
+                    Visitar o grimório
+                </a>
+            </div>
+        </section>
+    </main>
+
+
+    <script>
+        async function carregarTesouro() {
+            const codigo = window.location.pathname.split("/").pop();
+
+            try {
+                const resposta = await fetch(
+                    `/api/tesouros/${encodeURIComponent(codigo)}`
+                );
+
+                if (!resposta.ok) {
+                    throw new Error("Tesouro não encontrado.");
+                }
+
+                // Primeiro, recebemos os dados da API.
+                const tesouro = await resposta.json();
+
+                // Depois, podemos acessar as propriedades do tesouro.
+                const imagem = document.getElementById("imagem-tesouro");
+
+                if (imagem && tesouro.imagem) {
+                    imagem.src = tesouro.imagem;
+                    imagem.hidden = false;
+                } else if (imagem) {
+                    imagem.hidden = true;
+                    imagem.removeAttribute("src");
+                }
+
+                document.getElementById("titulo-tesouro").textContent =
+                    tesouro.titulo;
+
+                document.getElementById("raridade-tesouro").textContent =
+                    `Raridade: ${tesouro.raridade}`;
+
+                document.getElementById("mensagem-tesouro").textContent =
+                    tesouro.mensagem;
+
+                document.title = `${tesouro.titulo} | Tesouros do Campus`;
+
+            } catch (erro) {
+                console.error("Erro ao carregar tesouro:", erro);
+
+                document.getElementById("titulo-tesouro").textContent =
+                    "Tesouro não encontrado";
+
+                document.getElementById("raridade-tesouro").textContent = "";
+
+                document.getElementById("mensagem-tesouro").textContent =
+                    "Este tesouro não existe ou não está disponível.";
+            }
+        }
+
+        carregarTesouro();
+    </script>
+
+</body>
+
+</html>
