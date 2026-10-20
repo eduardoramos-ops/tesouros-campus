@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Deixe sua marca no Grimório do Campus."
+    >
+
+    <title>Grimório do Campus | Tesouros do Campus</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" defer></script>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <p class="subtitulo">TESOUROS DO CAMPUS</p>
+        <h1>Grimório do Campus</h1>
+        <p class="descricao">
+            Cada passagem deixa uma história.
+            Cada palavra preserva uma memória.
+        </p>
+    </header>
+
+    <main class="container">
+        <section class="livro" aria-labelledby="titulo-inscricoes">
+            <div class="livro-cabecalho">
+                <span class="ornamento" aria-hidden="true">✦</span>
+
+                <h2 id="titulo-inscricoes">Marcas deixadas</h2>
+
+                <span class="ornamento" aria-hidden="true">✦</span>
+            </div>
+
+            <p class="introducao">
+                Estas são as palavras daqueles que passaram por aqui.
+            </p>
+
+            <div
+                id="lista-inscricoes"
+                class="lista-inscricoes"
+                aria-live="polite"
+            >
+                <p class="estado-lista">
+                    Abrindo as páginas do grimório...
+                </p>
+            </div>
+
+            <p id="mensagem-status" class="mensagem-status"
+               role="status"></p>
+
+            <div class="acoes">
+                <button
+                    id="botao-marca"
+                    class="botao-principal"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="formulario-marca"
+                >
+                    Deixar minha marca
+                </button>
+            </div>
+
+            <form
+                id="formulario-marca"
+                class="formulario-marca"
+                hidden
+            >
+                <h2>Registre sua passagem</h2>
+
+                <label for="nome">Nome ou apelido</label>
+                <input
+                    id="nome"
+                    name="nome"
+                    type="text"
+                    maxlength="50"
+                    required
+                    placeholder="Como deseja ser lembrado?"
+                >
+
+                <label for="mensagem">Sua mensagem</label>
+                <textarea
+                    id="mensagem"
+                    name="mensagem"
+                    maxlength="100"
+                    rows="3"
+                    required
+                    placeholder="Escreva sua marca neste grimório..."
+                ></textarea>
+
+                <div class="contador">
+                    <span id="contador-caracteres">0</span>/100 caracteres
+                </div>
+
+                <div class="acoes-formulario">
+                    <button
+                        class="botao-secundario"
+                        id="botao-cancelar"
+                        type="button"
+                    >
+                        Voltar
+                    </button>
+
+                    <button
+                        class="botao-principal"
+                        id="botao-enviar"
+                        type="submit"
+                    >
+                        Registrar marca
+                    </button>
+                </div>
+            </form>
+
+            <footer class="livro-rodape">
+                <span>Uma memória de cada vez</span>
+            </footer>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <p>Tesouros do Campus · IFRN</p>
+    </footer>
+</body>
+</html>
