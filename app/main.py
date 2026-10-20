@@ -82,16 +82,9 @@ tesouros = {
                 "titulo": "Você caiu em uma armadilha!",
                 "mensagem": "O pedrin do free fire expandiu o seu domínio e te prendeu nele, onde o capa é absoluto!",
                 "raridade": "xxxxxx",
-                "imagem": "https://i.pinimg.com/736x/89/0d/45/890d45e57c7a58c31af6fd8f692787d0.jpg ",
+                "imagem": "https://i.pinimg.com/736x/89/0d/45/890d45e57c7a58c31af6fd8f692787d0.jpg",
                 },
-
-    "TES-007": {
-                    "titulo": "Você encontrou uma carta mítica!",
-                    "mensagem": "+1000 aura e -999 ego",
-                    "raridade": "Mítico",
-                    "imagem": "https://i.pinimg.com/736x/35/a4/0b/35a40b06bea33951093e8c2ce8178cb2.jpg",
-                    "video": "blob:https://br.pinterest.com/2f3c8403-1286-48db-a093-1b8a77b308af"
-                    },                       
+                     
 }
 
 # ==========================================

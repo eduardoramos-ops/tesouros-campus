@@ -1,6 +1,13 @@
+
 from datetime import datetime
-from pydantic import BaseModel, HttpUrl
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    HttpUrl,
+    field_validator,
+)
 
 
 # Dados recebidos ao criar uma inscrição
@@ -23,6 +30,8 @@ class InscricaoResponse(BaseModel):
 
     model_config = ConfigDict(from_attributes=True)
 
+
+# Dados devolvidos ao consultar um tesouro
 class TesouroResponse(BaseModel):
     titulo: str
     mensagem: str

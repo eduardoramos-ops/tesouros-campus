@@ -45,9 +45,14 @@
                 );
 
                 if (!resposta.ok) {
-                    throw new Error("Tesouro não encontrado.");
-                }
+                    const detalhe = await resposta.text();
 
+                    throw new Error(
+                        `Erro HTTP ${resposta.status}: ${detalhe}`
+                    );
+                }
+                
+ 
                 const tesouro = await resposta.json();
 
                 const imagem = document.getElementById("imagem-tesouro");
